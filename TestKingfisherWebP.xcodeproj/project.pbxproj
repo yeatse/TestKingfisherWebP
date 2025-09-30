@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		38D0288F2E8C2FAB003333CB /* KingfisherWebP in Frameworks */ = {isa = PBXBuildFile; productRef = 38D0288E2E8C2FAB003333CB /* KingfisherWebP */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		38D0287F2E8C2F59003333CB /* TestKingfisherWebP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestKingfisherWebP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38D0288F2E8C2FAB003333CB /* KingfisherWebP in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +70,7 @@
 			);
 			name = TestKingfisherWebP;
 			packageProductDependencies = (
+				38D0288E2E8C2FAB003333CB /* KingfisherWebP */,
 			);
 			productName = TestKingfisherWebP;
 			productReference = 38D0287F2E8C2F59003333CB /* TestKingfisherWebP.app */;
@@ -94,6 +100,9 @@
 			);
 			mainGroup = 38D028762E8C2F59003333CB;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				38D0288D2E8C2FAB003333CB /* XCRemoteSwiftPackageReference "KingfisherWebP" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 38D028802E8C2F59003333CB /* Products */;
 			projectDirPath = "";
@@ -328,6 +337,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		38D0288D2E8C2FAB003333CB /* XCRemoteSwiftPackageReference "KingfisherWebP" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yeatse/KingfisherWebP.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.7.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		38D0288E2E8C2FAB003333CB /* KingfisherWebP */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 38D0288D2E8C2FAB003333CB /* XCRemoteSwiftPackageReference "KingfisherWebP" */;
+			productName = KingfisherWebP;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 38D028772E8C2F59003333CB /* Project object */;
 }
