@@ -4,13 +4,15 @@ A test project demonstrating WebP image support using Kingfisher and KingfisherW
 
 ## Overview
 
-This SwiftUI application showcases how to load and display animated WebP images from local bundle resources using Kingfisher's AnimatedImageView with WebP support.
+This SwiftUI application showcases how to load and display animated WebP images from both local bundle resources and network URLs using Kingfisher's AnimatedImageView with WebP support.
 
 ## Features
 
-- Load animated WebP images from bundle
+- Load animated WebP images from local bundle
+- Load animated WebP images from network URLs
 - Display using Kingfisher's AnimatedImageView
 - WebP processing and caching support
+- Custom HTTP headers for network requests
 
 ## Dependencies
 
@@ -25,13 +27,38 @@ This SwiftUI application showcases how to load and display animated WebP images 
 
 ## Usage
 
-The project includes a sample WebP image (`heart.webp`) that is loaded using Kingfisher with WebP processor and serializer:
+### Local Bundle WebP
+
+The project includes a sample WebP image (`heart.webp`) that is loaded from the bundle:
 
 ```swift
-animatedView.kf.setImage(with: url, options: [
-    .processor(WebPProcessor.default),
-    .cacheSerializer(WebPSerializer.default)
-])
+if let url = Bundle.main.url(forResource: "heart", withExtension: "webp") {
+    animatedView.kf.setImage(with: url, options: [
+        .processor(WebPProcessor.default),
+        .cacheSerializer(WebPSerializer.default)
+    ])
+}
+```
+
+### Network WebP
+
+The app also demonstrates loading animated WebP images from network URLs with custom headers:
+
+```swift
+if let url = URL(string: "https://isparta.github.io/compare-webp/image/gif_webp/webp/2.webp") {
+    let modifier = AnyModifier { request in
+        var req = request
+        req.addValue("image/webp, */*", forHTTPHeaderField: "Accept")
+        return req
+    }
+
+    animatedView.kf.setImage(with: url, options: [
+        .processor(WebPProcessor.default),
+        .cacheSerializer(WebPSerializer.default),
+        .requestModifier(modifier),
+        .transition(.fade(0.25))
+    ])
+}
 ```
 
 ## License
