@@ -11,18 +11,31 @@ import KingfisherWebP
 
 struct ContentView: View {
     var body: some View {
-        VStack(spacing: 20) {
+        ScrollView {
             Text("本地 Bundle WebP")
                 .font(.headline)
             WebPImageView()
                 .frame(width: 200, height: 200)
-
+            
             Text("网络 WebP 动图")
                 .font(.headline)
             NetworkWebPImageView()
                 .frame(width: 200, height: 200)
+            
+            Text("SwiftUI 网络图片")
+                .font(.headline)
+            KFAnimatedImage(URL(string: "https://raw.githubusercontent.com/resetsix/draft/main/demo.webp"))
+                .setProcessor(WebPProcessor.default)
+                .serialize(by: WebPSerializer.default)
+                .frame(width: 200, height: 200)
+            
+            Text("SwiftUI 本地动图")
+                .font(.headline)
+            KFAnimatedImage(Bundle.main.url(forResource: "heart", withExtension: "webp"))
+                .setProcessor(WebPProcessor.default)
+                .serialize(by: WebPSerializer.default)
+                .frame(width: 200, height: 200)
         }
-        .padding()
     }
 }
 
